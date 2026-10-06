@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+
+# LaTeX build files (report.pdf is kept out too; build it from source)
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+report.pdf
+
+# Processed audio written by the scripts (regenerate by running them)
+assignment1/*_out*.wav
+
+# Submission zip
+*.zip
