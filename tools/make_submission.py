@@ -9,7 +9,7 @@ import os
 import sys
 import zipfile
 
-MATRIC = []  # TODO: our four matric numbers, e.g. ["1234567a", "7654321b", ...]
+MATRIC = ["3184012k", "3183509k", "2560946a", "3184088h"]  # Team 37, lower case as in Moodle's example
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 CODE = os.path.join(ROOT, "assignment1")
