@@ -1,6 +1,6 @@
 """Check both recordings meet the marking rules: >= 44.1 kHz, uncompressed PCM, not clipped.
 
-Run: python3 check_recordings.py
+Run from anywhere: python3 tools/check_recordings.py
 """
 import os
 
@@ -9,8 +9,8 @@ from scipy.io import wavfile
 
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-WAV_5CM = os.path.join(HERE, "voice_5cm.wav")
-WAV_1M = os.path.join(HERE, "voice_1m.wav")
+WAV_5CM = os.path.join(HERE, "..", "assignment1", "original_speech_5cm.wav")
+WAV_1M = os.path.join(HERE, "..", "assignment1", "original_speech_1m.wav")
 
 for path in (WAV_5CM, WAV_1M):
     fs, x = wavfile.read(path)

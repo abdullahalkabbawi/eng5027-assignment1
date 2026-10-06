@@ -12,8 +12,5 @@ __pycache__/
 *.fdb_latexmk
 report.pdf
 
-# Processed audio written by the scripts (regenerate by running them)
-assignment1/*_out*.wav
-
 # Submission zip
 *.zip
