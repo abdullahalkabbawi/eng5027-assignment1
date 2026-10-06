@@ -2,6 +2,10 @@
 
 **Deadline: Monday 19 October, 3pm, on Moodle.** Aim to submit by noon.
 
+The official brief is [`assignment-brief.pdf`](assignment-brief.pdf). Check every script and
+the report against it before merging. If anything in this README disagrees with it, the brief
+wins.
+
 | Task | Marks | What |
 |---|---|---|
 | 1 | 20% | Time and dB/log-frequency spectra of both recordings; mark vowel fundamentals, consonant band and noise-only region **by eye** |
@@ -10,14 +14,24 @@
 
 ## Rules that cost all the marks for a part
 
-- **Only `np.fft.fft`, `np.fft.ifft`, `np.fft.fftfreq`** for spectral work, plus plain NumPy,
-  `scipy.io.wavfile` and Matplotlib. No `scipy.signal`, no FIR/IIR, no convolution as a filter,
-  no peak finders or audio-effect libraries.
+- **Only `np.fft.fft` and `np.fft.ifft`** for signal processing. Not even `np.fft.fftfreq`
+  (the brief names it explicitly): build the frequency axis yourself with plain NumPy. No
+  `scipy.signal`, no FIR/IIR, no convolution as a filter, no peak finders or audio-effect
+  libraries. Any of these gives **zero for that part**.
 - **No automatic detection in Task 1.** Read the peaks off the plot yourselves.
-- Recordings ≥ 44.1 kHz, uncompressed, not clipped.
-- **Figures must be PDF/SVG.** Screenshots and JPEGs are not marked.
-- Markers run the scripts **on Linux** with `python3 taskN.py`. Code that crashes or shows no
-  plots loses most of the marks.
+- Recordings ≥ 44 kHz, uncompressed, not clipped, full spectrum up to 20 kHz.
+- **Figures must be vector (PDF/SVG).** Screenshots and JPEGs are not marked. Report is PDF.
+
+## Rules that cost marks
+
+- Markers run the scripts **on Linux from the command line** (`python3 taskN.py`). Code that
+  crashes or shows no plots gets low marks. No absolute paths; platform-independent.
+- **Efficient code**: don't compute a huge spectrum to use one value.
+- **Short, readable code.** Inflated or unreadable LLM-style code gets low or zero marks; every
+  task can be solved in very few lines.
+- **GenAI acknowledgement** in the report if any GenAI was used: tool name, version, publisher,
+  how it was used, and what you did yourselves.
+- The markers may **interview** you to check you can explain your code.
 
 ## Who does what
 
@@ -53,6 +67,7 @@ TODO: copy them here exactly, then rename the WAVs and update every script that 
 ## Layout
 
 ```
+assignment-brief.pdf    # the official assignment sheet: check everything against it
 assignment1/            # this folder (code + WAVs) is what goes in the zip
     common.py           # shared helpers, written by the group
     check_recordings.py # sample rate, format, peak level, clipping
