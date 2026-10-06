@@ -36,41 +36,38 @@ wins.
   how it was used, and what you did yourselves.
 - The markers may **interview** you to check you can explain your code.
 
-## Team 37
+## Team 37 and who does what
 
-| Name | Matric | Role |
-|---|---|---|
-| Nommy Khodadad | 3184012K | TODO |
-| Parth Sheetal Kumthekar | 3183509K | TODO |
-| Abdullah Alkabbawi | 2560946A | A (voice in the recordings) |
-| Seyedmostafa Hosseini Abardeh | 3184088H | TODO |
+| Name | Matric | Owns | Report sections | Also |
+|---|---|---|---|---|
+| **Abdullah** Alkabbawi | 2560946A | Recordings (Abdullah's voice); **Part 1** in `audioplot.py` | `intro.tex`, `task1.tex` | Repo; runs every script from a fresh terminal; builds the zip |
+| **Nommy** Khodadad | 3184012K | **Part 2** in `audioplot.py` (writes the enhanced WAVs) | `task2.tex` | Report editor: consistent style, final PDF |
+| **Parth** Sheetal Kumthekar | 3183509K | **Part 3 code** in `auralexciter.py` (side chain, non-linearity, mix) | `task3.tex` (design) | Reviews Part 1 |
+| **Seyedmostafa** Hosseini Abardeh | 3184088H | **Part 3 experiments**: version log, annotated figures, listening at matched peak level | `task3.tex` (iterations, figures), `genai.tex` | Reviews Part 2 |
+
+Part 3 is worth 60%, which is why two people share it. Abdullah and Nommy join Part 3 as
+listeners once Parts 1 and 2 are done (from Mon 12).
+
+**Everyone must be able to explain every line of code**, because the markers may interview
+any of us. On Fri 16 Oct each owner walks the others through their code.
 
 Submission zip: `3184012k_3183509k_2560946a_3184088h.zip`
 
-## Who does what
-
-| Person | Owns | Also |
-|---|---|---|
-| A | Recordings, Part 1 (in `audioplot.py`) | Repo; checks every script runs from a fresh terminal |
-| B | Part 2 (in `audioplot.py`, writes the enhanced WAVs) | Report editor (consistent style, final PDF) |
-| C | Part 3 code in `auralexciter.py` (side chain, non-linearity, mix) | Reviews Part 1 |
-| D | Part 3 experiments (version log, figures, listening at matched peak level) | GenAI statement; reviews Part 2 |
-
-**Everyone must be able to explain every line of code**, because the markers may interview
-any of us. On Fri 16 Oct each owner walks the others through their script.
-
 ## Schedule
 
-| Date | Goal |
+| Date | Abdullah | Nommy | Parth | Seyedmostafa |
+|---|---|---|---|---|
+| Tue 6 Oct | Moodle Wiki entry; repo + Overleaf | Accept repo invite | Accept repo invite | Accept repo invite |
+| Wed 7 | Re-record, check with `python3 tools/check_recordings.py`, push WAVs | Read brief, plan Part 2 | Read brief + Aphex diagram, plan exciter | Read brief, plan experiments and figures |
+| Thu 8 – Fri 9 | Part 1 plots and annotations | FFT → gain → IFFT code | Exciter v1 | Listening/plot setup for v1 |
+| Sat 10 – Sun 11 | Write up Part 1 | Gain curves from the Part 1 plots; enhanced WAVs | v2 | Log v1 → v2; first figures |
+| Mon 12 – Thu 15 | Listener for Part 3 | Write up Part 2; listener for Part 3 | v3, v4, final design | Final annotated figures; write up iterations |
+
+| Date | Everyone |
 |---|---|
-| Tue 6 Oct | Group in Moodle Wiki (names + matric numbers); Moodle naming rules copied below; repo and Overleaf ready |
-| Wed 7 | Recordings re-done, saved as `original_speech_5cm.wav` / `original_speech_1m.wav`, checked (`python3 tools/check_recordings.py`) |
-| Thu 8 – Fri 9 | Task 1 plots and annotations; Task 2 FFT → gain → IFFT code; exciter v1 |
-| Sat 10 – Sun 11 | Task 2 corner frequencies from the Task 1 plots; exciter v2; Task 1 written up |
-| Mon 12 – Thu 15 | Exciter v3, v4 and final figures (A and B help with listening); Task 2 written up |
-| Fri 16 | Code freeze, code walkthrough |
-| Sat 17 | Full draft |
-| Sun 18 | Everyone reads the whole report; scripts tested from a fresh terminal; zip built (`python3 tools/make_submission.py`) |
+| Fri 16 | Code freeze; code walkthrough |
+| Sat 17 | Full draft (Nommy assembles) |
+| Sun 18 | Everyone reads the whole report; scripts tested from a fresh terminal; Abdullah builds the zip (`python3 tools/make_submission.py`) |
 | Mon 19, by noon | Submit |
 
 ## Moodle submission
@@ -135,5 +132,5 @@ is case-sensitive.
 ## Working with Git
 
 - Pull before you start, commit small, push when it runs.
-- Only edit your own part and section file unless you've agreed otherwise. A and B share
+- Only edit your own part and section file unless you've agreed otherwise. Abdullah and Nommy share
   `audioplot.py`: keep to your own `# ---- Part N ----` block and pull right before editing.
