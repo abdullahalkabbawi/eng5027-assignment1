@@ -61,7 +61,6 @@ assignment1/            # this folder (code + WAVs) is what goes in the zip
     figures/            # PDFs written by the scripts, used by the report
 report.tex              # main LaTeX file
 sections/               # one file per section, so we can edit in parallel
-genai-log.md            # everyone logs GenAI use here as it happens
 ```
 
 ## Running the code
