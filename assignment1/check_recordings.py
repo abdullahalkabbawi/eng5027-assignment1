@@ -2,10 +2,15 @@
 
 Run: python3 check_recordings.py
 """
+import os
+
 import numpy as np
 from scipy.io import wavfile
 
-from common import WAV_5CM, WAV_1M
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+WAV_5CM = os.path.join(HERE, "voice_5cm.wav")
+WAV_1M = os.path.join(HERE, "voice_1m.wav")
 
 for path in (WAV_5CM, WAV_1M):
     fs, x = wavfile.read(path)

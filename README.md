@@ -47,14 +47,14 @@ any of us. On Fri 16 Oct each owner walks the others through their script.
 
 ## Moodle naming conventions
 
-TODO: copy them here exactly, then rename the WAVs and update `WAV_5CM` / `WAV_1M` in
-`assignment1/common.py` (the only place the names appear).
+TODO: copy them here exactly, then rename the WAVs and update every script that opens them
+(including `check_recordings.py`).
 
 ## Layout
 
 ```
 assignment1/            # this folder (code + WAVs) is what goes in the zip
-    common.py           # loading, FFT spectrum, dB, figure saving; shared by all tasks
+    common.py           # shared helpers, written by the group
     check_recordings.py # sample rate, format, peak level, clipping
     task1.py task2.py task3.py
     voice_5cm.wav voice_1m.wav
