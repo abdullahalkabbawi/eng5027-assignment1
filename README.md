@@ -8,8 +8,8 @@ wins.
 
 | Task | Marks | What |
 |---|---|---|
-| 1 | 20% | Time and dB/log-frequency spectra of both recordings; mark vowel fundamentals, consonant band and noise-only region **by eye** |
-| 2 | 20% | Enhance each recording by multiplying its FFT by a gain curve; explain noise, bass loss at 1 m and pops at 5 cm |
+| 1 | 20% | Both recordings: time plot (linear axes, normalised amplitude) and spectrum (log frequency, amplitude in dB, labelled axes); mark vowel fundamentals, consonant range and noise-only region **by eye**, with reasoning |
+| 2 | 20% | Enhance **both** recordings by boosting/reducing FFT coefficients, then IFFT: (a) clearer and more interesting, like a radio voice, (b) noise removed. Explain the noise and its band, bass loss at 1 m and pops at 5 cm |
 | 3 | 60% | Aural exciter for the 5 cm recording, shown as iterations (v1, v2, v3…) with at least two annotated graphs |
 
 ## Rules that cost all the marks for a part
