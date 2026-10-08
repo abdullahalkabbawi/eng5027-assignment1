@@ -28,7 +28,9 @@ def cut(signal, fs, t0, t1):                         # piece of signal from t0 t
 def plot_recording(filename, name, vowels, s_start, consonants, noise):
     fs, signal = wavfile.read(filename)              # fs = sample rate, signal = samples
     print(name, fs, signal.dtype, signal.shape)      # 44100, int16, (samples, 2 channels)
-    signal = signal[:, 0] / 32768.0                  # left channel, int16 full scale -> -1 to +1
+    if signal.ndim > 1:                              # stereo file: keep the left channel
+        signal = signal[:, 0]
+    signal = signal / 32768.0                        # int16 full scale -> -1 to +1
     time = np.arange(signal.size) / fs               # t[n] = n/fs in seconds
 
     # (i) time domain
@@ -55,7 +57,7 @@ def plot_recording(filename, name, vowels, s_start, consonants, noise):
     plt.legend()
     plt.savefig("frequency_" + name + ".pdf")
 
-    # (iii) evidence: each vowel on its own, zoomed to f0 and its first harmonics
+    # (iii): each vowel on its own, zoomed to f0 and its first harmonics
     plt.figure()
     for i, (label, t0, t1, f0) in enumerate(vowels):
         f, dB = spectrum(cut(signal, fs, t0, t1), fs)            # spectrum of this vowel only
@@ -68,7 +70,7 @@ def plot_recording(filename, name, vowels, s_start, consonants, noise):
     plt.legend()
     plt.savefig("vowels_" + name + ".pdf")
 
-    # (iv) and (v) evidence: an "s" against silence, both 0.06 s long
+    # (iv) and (v): "s" vs silence, both 0.06 s long
     plt.figure()
     f, dB = spectrum(cut(signal, fs, s_start, s_start + 0.06), fs)
     plt.plot(f, dB, label='"s" (' + str(s_start) + " s)")
@@ -87,7 +89,7 @@ def plot_recording(filename, name, vowels, s_start, consonants, noise):
 #            We were away a year ago, evaluating pure audio for our DSP lab."
 # vowels = (name, start s, end s, f0 Hz); s_start = the "s" in DSP;
 # consonants = (low Hz, high Hz); noise = (low Hz, high Hz)
-# All values READ BY EYE from the plots (the brief bans automatic detection).
+# All values READ BY EYE from the plots.
 plot_recording("original_speech_5cm.wav", "5cm",
                vowels=[("I", 0.55, 0.75, 136), ("o in Glasgow", 2.28, 2.44, 130),
                        ("au in audio", 5.49, 5.60, 134), ("e in DSP", 6.92, 7.02, 135)],
