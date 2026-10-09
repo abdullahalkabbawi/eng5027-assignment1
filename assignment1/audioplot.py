@@ -27,7 +27,7 @@ def cut(signal, fs, t0, t1):                         # piece of signal from t0 t
 
 def plot_recording(filename, name, vowels, s_start, consonants, noise):
     fs, signal = wavfile.read(filename)              # fs = sample rate, signal = samples
-    print(name, fs, signal.dtype, signal.shape)      # 44100, int16, (samples, 2 channels)
+    print(name, fs, signal.dtype, signal.shape)      # 48000, int16, (samples,) for mono
     if signal.ndim > 1:                              # stereo file: keep the left channel
         signal = signal[:, 0]
     signal = signal / 32768.0                        # int16 full scale -> -1 to +1
@@ -70,12 +70,12 @@ def plot_recording(filename, name, vowels, s_start, consonants, noise):
     plt.legend()
     plt.savefig("vowels_" + name + ".pdf")
 
-    # (iv) and (v): "s" vs silence, both 0.06 s long
+    # (iv) and (v): "s" vs silence, both 0.15 s long
     plt.figure()
-    f, dB = spectrum(cut(signal, fs, s_start, s_start + 0.06), fs)
+    f, dB = spectrum(cut(signal, fs, s_start, s_start + 0.15), fs)
     plt.plot(f, dB, label='"s" (' + str(s_start) + " s)")
-    f, dB = spectrum(cut(signal, fs, 0.05, 0.11), fs)            # quiet start, before speaking
-    plt.plot(f, dB, label="silence (0.05-0.11 s)")
+    f, dB = spectrum(cut(signal, fs, 0.05, 0.20), fs)            # quiet start, before speaking
+    plt.plot(f, dB, label="silence (0.05-0.20 s)")
     plt.xscale("log")
     plt.xlim(20, fs / 2)
     plt.xlabel("Frequency (Hz)")
@@ -85,19 +85,18 @@ def plot_recording(filename, name, vowels, s_start, consonants, noise):
     plt.savefig("s_vs_silence_" + name + ".pdf")
 
 
-# Sentence: "I am Abdullah, recording at Glasgow University.
-#            We were away a year ago, evaluating pure audio for our DSP lab."
-# vowels = (name, start s, end s, f0 Hz); s_start = the "s" in DSP;
+# Sentence: "Paul's father bought six pieces of fresh cheese at the market place."
+# vowels = (name, start s, end s, f0 Hz); s_start = the final "s" of "place";
 # consonants = (low Hz, high Hz); noise = (low Hz, high Hz)
 # All values READ BY EYE from the plots.
 plot_recording("original_speech_5cm.wav", "5cm",
-               vowels=[("I", 0.55, 0.75, 136), ("o in Glasgow", 2.28, 2.44, 130),
-                       ("au in audio", 5.49, 5.60, 134), ("e in DSP", 6.92, 7.02, 135)],
-               s_start=7.05, consonants=(1000, 22050), noise=(20, 80))
+               vowels=[("aw in Paul's", 1.10, 1.22, 165), ("ah in father", 1.95, 2.15, 140),
+                       ("ee in cheese", 5.78, 5.98, 148), ("ay in place", 9.02, 9.22, 129)],
+               s_start=9.30, consonants=(520, 24000), noise=(20, 80))
 plot_recording("original_speech_1m.wav", "1m",
-               vowels=[("I", 0.46, 0.64, 132), ("o in Glasgow", 2.18, 2.33, 130),
-                       ("au in audio", 5.12, 5.24, 130), ("e in DSP", 6.25, 6.35, 123)],
-               s_start=6.38, consonants=(3222, 20060), noise=(20060, 22050))
+               vowels=[("aw in Paul's", 1.08, 1.20, 165), ("ah in father", 1.80, 2.00, 139),
+                       ("ee in cheese", 5.92, 6.12, 142), ("ay in place", 9.58, 9.78, 126)],
+               s_start=9.86, consonants=(2253, 22000), noise=(22000, 24000))
 plt.show()                                           # show all plots
 
 # ---- Part 2 (Nommy) ----
